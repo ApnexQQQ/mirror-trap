@@ -1,0 +1,14 @@
+[Unit]
+Description=Liar's Echo Dashboard
+After=network.target
+
+[Service]
+Type=simple
+User=dell
+WorkingDirectory=/home/dell/liars_echo/dashboard
+ExecStart=/usr/bin/python3 /home/dell/liars_echo/dashboard/app.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

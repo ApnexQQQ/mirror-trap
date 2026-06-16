@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  liarsecho:
+    build: .
+    container_name: liarsecho
+    ports:
+      - "5000:5000"      # Dashboard
+      - "8080:8080"      # HTTP honeypot
+      - "8443:8443"      # HTTPS honeypot
+      - "3306:3306"      # MySQL honeypot
+      - "5432:5432"      # PostgreSQL honeypot
+      - "6379:6379"      # Redis honeypot
+    volumes:
+      - liarsecho_data:/tmp  # Persist DB & logs
+      - ./config/settings.py:/app/config/settings.py:ro  # Config
+    restart: unless-stopped
+
+volumes:
+  liarsecho_data:

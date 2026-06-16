@@ -1,0 +1,16 @@
+[Unit]
+Description=Liar's Echo Honeypot
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/home/dell/liars_echo
+ExecStart=/usr/bin/python3 /home/dell/liars_echo/main.py
+Restart=always
+RestartSec=5
+StandardOutput=append:/tmp/liars_echo.log
+StandardError=append:/tmp/liars_echo.log
+
+[Install]
+WantedBy=multi-user.target
